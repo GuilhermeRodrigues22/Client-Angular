@@ -34,4 +34,14 @@ export class ClientsComponent implements OnInit {
       next: (data) => (this.clients = data),
     });
   }
+
+  save(){
+   this.ClientService.save(this.formGroupClient.value).subscribe(
+    {
+      next: data => {this.clients.push(data);
+                    this.formGroupClient.reset();
+                    }
+    }
+   )
+  }
 }
