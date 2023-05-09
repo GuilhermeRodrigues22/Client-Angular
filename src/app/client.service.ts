@@ -18,4 +18,13 @@ getClients(): Observable<Client[]> {
     return this.http.post<Client>(this.url, client);
   }
 
+  update(client: Client): Observable<Client>{
+    return this.http.put<Client>(`${this.url}/${client.id}`, client);
+  }
+
+
+  delete(client: Client): Observable<void>{
+    return this.http.delete<void>(`${this.url}/${client.id}`);
+  }
+  
 }

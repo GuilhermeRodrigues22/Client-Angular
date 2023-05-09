@@ -2,23 +2,18 @@
   "clients": [
     {
       "id": 1,
-      "name": "Ana Maria",
-      "email": "ana@gmail.com"
-    },
-    {
-      "id": 1,
-      "name": "Pedro Silva",
-      "email": "pedro@gmail.com"
-    },
-    {
-      "id": 1,
-      "name": "Fernanda Gomes",
-      "email": "fernanda@gmail.com"
+      "name": "Carlos gay",
+      "email": "carlos@gmail.com"
     },
     {
       "id": 2,
-      "name": "Carlos",
-      "email": "ccccc@gmail.com"
+      "name": "selva",
+      "email": "selva@gmail.com"
+    },
+    {
+      "id": 3,
+      "name": "gg",
+      "email": "ggg@gmail.com"
     }
   ]
 }
