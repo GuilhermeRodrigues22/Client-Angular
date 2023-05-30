@@ -2,18 +2,13 @@
   "clients": [
     {
       "id": 1,
-      "name": "Carlos gay",
+      "name": "Carlos",
       "email": "carlos@gmail.com"
     },
     {
-      "id": 2,
-      "name": "selva",
-      "email": "selva@gmail.com"
-    },
-    {
       "id": 3,
-      "name": "gg",
-      "email": "ggg@gmail.com"
+      "name": "Marcio",
+      "email": "marcio@gmail.com"
     }
   ]
 }

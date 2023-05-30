@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { ClientService } from './../client.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter } from '@angular/core';
 import { Client } from '../client';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
@@ -11,61 +11,57 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class ClientsComponent implements OnInit {
   clients: Client[] = [];
+  client: Client = {} as Client;
   isEditing: boolean = false;
-  formGroupClient: FormGroup;
 
-  constructor(
-    private ClientService: ClientService,
-    private formBuilder: FormBuilder
-  ) {
-    this.formGroupClient = formBuilder.group({
-      id: [''],
-      name: [''],
-      email: [''],
-    });
-  }
+
+
+  constructor(private clientService: ClientService){
+}
+
 
   ngOnInit(): void {
     this.loadClients();
   }
 
   loadClients() {
-    this.ClientService.getClients().subscribe({
+    this.clientService.getClients().subscribe({
       next: (data) => (this.clients = data),
     });
   }
 
-  save() {
+  onCleanEvent() {
+    this.isEditing = false;
+  }
+
+  onSaveEvent(client: Client) {
     if (this.isEditing) {
-      this.ClientService.update(this.formGroupClient.value).subscribe({
+      this.clientService.update(client).subscribe({
         next: () => {
           this.loadClients();
-          this.formGroupClient.reset();
           this.isEditing = false;
         },
       });
     } else {
-      this.ClientService.save(this.formGroupClient.value).subscribe({
+      this.clientService.save(client).subscribe({
         next: (data) => {
-          this.clients.push(data);
-          this.formGroupClient.reset();
+        this.clients.push(data);
         },
       });
     }
   }
 
+
+
   edit(client: Client) {
-    this.formGroupClient.setValue(client);
+    this.client = client;
     this.isEditing = true;
   }
 
   delete(client: Client) {
-    this.ClientService.delete(client).subscribe({
+    this.clientService.delete(client).subscribe({
       next: () => this.loadClients(),
     });
   }
 
-  FormReset() {
-    this.formGroupClient.reset();
-  }
 }
