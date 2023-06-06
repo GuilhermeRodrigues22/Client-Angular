@@ -14,6 +14,10 @@ getClients(): Observable<Client[]> {
   return this.http.get<Client[]>(this.url);
 }
 
+getClient(id: number): Observable<Client> {
+  return this.http.get<Client>(`${this.url}/${id}`);
+}
+
   save(client: Client): Observable<Client>{
     return this.http.post<Client>(this.url, client);
   }
@@ -26,5 +30,5 @@ getClients(): Observable<Client[]> {
   delete(client: Client): Observable<void>{
     return this.http.delete<void>(`${this.url}/${client.id}`);
   }
-  
+
 }
